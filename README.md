@@ -2,6 +2,13 @@
 
 ## SDK 集成
 
+### 远程依赖集成
+需要确保主项目 build.gradle 文件中声明了 jcenter() 配置
+
+```
+implementation 'com.yunpian:captcha:1.0.4'
+```
+
 ### 手动导入SDK
 将获取的 sdk 中的 aar 文件放到工程中的libs文件夹下，然后在 app 的 build.gradle 文件中增加如下代码
 
@@ -16,7 +23,7 @@ repositories {
 在 dependencies 依赖中增加对 aar 包的引用
 
 ```
-implementation(name: 'qipeng-captcha-v1.0.3', ext: 'aar') // aar 名称和版本号以下载下来的最新版为准
+implementation(name: 'qipeng-captcha-v1.0.4', ext: 'aar') // aar 名称和版本号以下载下来的最新版为准
 ```
 
 ## 开始使用
@@ -44,7 +51,7 @@ QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
 QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
                 ... // 开发者根据需要自行配置参数
                 .build();
-QPCapatcha.getInstance().verify(config);
+QPCaptcha.getInstance().verify(config);
 ```
 
 ### 自定义语言显示（可选）
@@ -63,23 +70,7 @@ QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
                 .setLangPackModel(langPackModel) // 界面语言配置
 	             ...
                 .build();
-QPCapatcha.getInstance().verify(config);
-```
-
-## 混淆配置
-proguard混淆配置文件增加：
-```
--keepattributes *Annotation*
--keep public class com.qipeng.capatcha.**{*;}
-
--keep public class android.webkit.**
-
--keepattributes SetJavaScriptEnabled
--keepattributes JavascriptInterface
-
--keepclassmembers class * {
-    @android.webkit.JavascriptInterface <methods>;
-}
+QPCaptcha.getInstance().verify(config);
 ```
 
 ## 效果演示

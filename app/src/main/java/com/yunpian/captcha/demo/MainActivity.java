@@ -12,10 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.qipeng.capatcha.QPCapatcha;
-import com.qipeng.capatcha.QPCaptchaConfig;
-import com.qipeng.capatcha.QPCaptchaListener;
-import com.qipeng.capatcha.utils.QPUtils;
+import com.qipeng.captcha.QPCaptcha;
+import com.qipeng.captcha.QPCaptchaConfig;
+import com.qipeng.captcha.QPCaptchaListener;
+import com.qipeng.captcha.utils.QPUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startVerify(View view) {
-        QPCapatcha.getInstance().init(this, "bbfe3828b1ce4c00b9d75760b435386d");
+        QPCaptcha.getInstance().init(this, "bbfe3828b1ce4c00b9d75760b435386d");
         start();
     }
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        QPCapatcha.getInstance().init(MainActivity.this, "bbfe3828b1ce4c00b9d75760b435386d");
+                        QPCaptcha.getInstance().init(MainActivity.this, "bbfe3828b1ce4c00b9d75760b435386d");
                         langPackModel = new JSONObject();
                         try {
                             langPackModel.put("YPcaptcha_02", ((EditText) inputView.findViewById(R.id.YPcaptcha_02)).getText());
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .build();
-        QPCapatcha.getInstance().verify(config);
+        QPCaptcha.getInstance().verify(config);
     }
 
 }
