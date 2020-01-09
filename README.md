@@ -1,4 +1,4 @@
-# 企朋 行为验证 Android SDK 接入指南
+# 云片 行为验证 Android SDK 接入指南
 
 ## SDK 集成
 
