@@ -31,7 +31,7 @@ implementation(name: 'qipeng-captcha-v1.0.4', ext: 'aar') // aar 名称和版本
 ### 初始化
 使用开发者自己的 captchaId 进行初始化 SDK
 ```
-QPCapatcha.getInstance().init(context, "captchaId");
+QPCaptcha.getInstance().init(context, "captchaId");
 ```
 
 ### 参数配置（可选）
