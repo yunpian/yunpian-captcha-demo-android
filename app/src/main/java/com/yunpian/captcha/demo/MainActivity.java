@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         alphaSeekbarTv = findViewById(R.id.alpha_seekbar_tv);
         expiredSeekbarTv = findViewById(R.id.expired_seekbar_tv);
 
+        TextView versionTv = findViewById(R.id.version_tv);
+        versionTv.setText(QPCaptcha.getInstance().getSDKVersion());
+
         alphaSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

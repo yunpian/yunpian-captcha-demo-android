@@ -187,4 +187,11 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/version_tv"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal|bottom"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
