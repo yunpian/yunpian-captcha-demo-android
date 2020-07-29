@@ -1,8 +1,11 @@
 package com.yunpian.captcha.demo;
 
 import android.content.DialogInterface;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -173,6 +176,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(String msg) {
                         Toast.makeText(MainActivity.this, "onError msg = " + msg, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                        Toast.makeText(MainActivity.this, "onReceivedSslError", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

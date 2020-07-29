@@ -6,7 +6,7 @@
 需要确保主项目 build.gradle 文件中声明了 jcenter() 配置
 
 ```
-implementation 'com.yunpian:captcha:1.0.6'
+implementation 'com.yunpian:captcha:1.0.7'
 ```
 
 ### 手动导入SDK
@@ -23,7 +23,7 @@ repositories {
 在 dependencies 依赖中增加对 aar 包的引用
 
 ```
-implementation(name: 'qipeng-captcha-v1.0.6', ext: 'aar') // aar 名称和版本号以下载下来的最新版为准
+implementation(name: 'qipeng-captcha-v1.0.7', ext: 'aar') // aar 名称和版本号以下载下来的最新版为准
 ```
 
 ## 开始使用
