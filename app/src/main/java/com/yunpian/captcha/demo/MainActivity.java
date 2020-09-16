@@ -35,14 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox langEnCb;
     private JSONObject langPackModel;
 
-    private int MIN_WIDTH;
+    private int MAX_PADDING = 64;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        MIN_WIDTH = QPUtils.sp2px(this, 230);
 
         showLoadingCb = findViewById(R.id.show_loading_cb);
         langEnCb = findViewById(R.id.lang_en_cb);
@@ -73,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         alphaSeekbar.setProgress(5);
-        widthSeekbar.setMax(QPUtils.getScreenWidth(this));
+        widthSeekbar.setMax(MAX_PADDING);
         widthSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (seekBar.getProgress() < MIN_WIDTH) {
-                    seekBar.setProgress(MIN_WIDTH);
+                if (seekBar.getProgress() > MAX_PADDING) {
+                    seekBar.setProgress(MAX_PADDING);
                 }
                 widthSeekbarTv.setText(String.valueOf(seekBar.getProgress()));
             }
@@ -90,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                if (seekBar.getProgress() < MIN_WIDTH) {
-                    seekBar.setProgress(MIN_WIDTH);
+                if (seekBar.getProgress() > MAX_PADDING) {
+                    seekBar.setProgress(MAX_PADDING);
                 }
                 widthSeekbarTv.setText(String.valueOf(seekBar.getProgress()));
             }
         });
-        widthSeekbar.setProgress(QPUtils.getScreenWidth(this) - QPUtils.dip2px(this, 32));
+        widthSeekbar.setProgress(16);
         expiredSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -153,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
     private void start(JSONObject langPackModel) {
         QPCaptchaConfig config = new QPCaptchaConfig.Builder(this)
                 .setAlpha(alphaSeekbar.getProgress() / 10f)
-                .setWidth(widthSeekbar.getProgress())
+                .setPaddingDp(widthSeekbar.getProgress())
                 .setLangPackModel(langPackModel)
                 .showLoadingView(showLoadingCb.isChecked())
                 .setLang(langEnCb.isChecked() ? QPCaptchaConfig.LANG_EN : QPCaptchaConfig.LANG_ZH)
