@@ -38,7 +38,6 @@ QPCaptcha.getInstance().init(context, "captchaId");
 ```
 QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
                 .setAlpha(0.7f) // 视图透明度
-                .setWidth() // 视图宽度
                 .setLangPackModel() // 界面语言配置
                 .showLoadingView() // 是否显示加载
                 .setLang(langEnCb.isChecked() ? QPCaptchaConfig.LANG_EN : QPCaptchaConfig.LANG_ZH) // 语言设置中文或者英文，默认中文
@@ -49,6 +48,7 @@ QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
 ### 开始验证
 ```
 QPCaptchaConfig config = new QPCaptchaConfig.Builder(contxt)
+                .setPaddingDp(16) // 视图宽度 Padding
                 ... // 开发者根据需要自行配置参数
                 .build();
 QPCaptcha.getInstance().verify(config);
