@@ -2,13 +2,6 @@
 
 ## SDK 集成
 
-### 远程依赖集成
-需要确保主项目 build.gradle 文件中声明了 jcenter() 配置
-
-```
-implementation 'com.yunpian:captcha:1.0.7'
-```
-
 ### 手动导入SDK
 将获取的 sdk 中的 aar 文件放到工程中的libs文件夹下，然后在 app 的 build.gradle 文件中增加如下代码
 
@@ -23,7 +16,7 @@ repositories {
 在 dependencies 依赖中增加对 aar 包的引用
 
 ```
-implementation(name: 'qipeng-captcha-v1.0.7', ext: 'aar') // aar 名称和版本号以下载下来的最新版为准
+implementation(name: 'yunpian-captcha-v1.5.0', ext: 'aar') // aar 名称和版本号以官网最新版为准
 ```
 
 ## 开始使用

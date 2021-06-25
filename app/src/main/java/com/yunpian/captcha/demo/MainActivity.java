@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.qipeng.captcha.QPCaptcha;
 import com.qipeng.captcha.QPCaptchaConfig;
 import com.qipeng.captcha.QPCaptchaListener;
-import com.qipeng.captcha.utils.QPUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -117,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private static final String DEMO_APP_ID = "e73fee86d1f14075a08a501b196a256e";
+
     public void startVerify(View view) {
-        QPCaptcha.getInstance().init(this, "bbfe3828b1ce4c00b9d75760b435386d");
+        QPCaptcha.getInstance().init(this, DEMO_APP_ID);
         start();
     }
 
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        QPCaptcha.getInstance().init(MainActivity.this, "bbfe3828b1ce4c00b9d75760b435386d");
+                        QPCaptcha.getInstance().init(MainActivity.this, DEMO_APP_ID);
                         langPackModel = new JSONObject();
                         try {
                             langPackModel.put("YPcaptcha_02", ((EditText) inputView.findViewById(R.id.YPcaptcha_02)).getText());
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void start(JSONObject langPackModel) {
         QPCaptchaConfig config = new QPCaptchaConfig.Builder(this)
+                .setUsername("这里是终端用户输入的用户名")
                 .setAlpha(alphaSeekbar.getProgress() / 10f)
                 .setPaddingDp(widthSeekbar.getProgress())
                 .setLangPackModel(langPackModel)
